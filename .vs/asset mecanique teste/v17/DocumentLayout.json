@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Utilisateur\\Desktop\\blocking\\asset mecanique teste\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{85D13772-2228-6C3B-C9F7-248F46EEA129}|Assembly-CSharp.csproj|C:\\Users\\Utilisateur\\Desktop\\blocking\\asset mecanique teste\\assets\\script\\playermouve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D13772-2228-6C3B-C9F7-248F46EEA129}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\playermouve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D13772-2228-6C3B-C9F7-248F46EEA129}|Assembly-CSharp.csproj|c:\\users\\utilisateur\\desktop\\blocking\\asset mecanique teste\\assets\\script\\qte systeme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D13772-2228-6C3B-C9F7-248F46EEA129}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\qte systeme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D13772-2228-6C3B-C9F7-248F46EEA129}|Assembly-CSharp.csproj|C:\\Users\\Utilisateur\\Desktop\\blocking\\asset mecanique teste\\assets\\script\\chest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D13772-2228-6C3B-C9F7-248F46EEA129}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\chest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "qte systeme.cs",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\Desktop\\blocking\\asset mecanique teste\\Assets\\script\\qte systeme.cs",
+              "RelativeDocumentMoniker": "Assets\\script\\qte systeme.cs",
+              "ToolTip": "C:\\Users\\Utilisateur\\Desktop\\blocking\\asset mecanique teste\\Assets\\script\\qte systeme.cs",
+              "RelativeToolTip": "Assets\\script\\qte systeme.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-22T17:59:26.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "chest.cs",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\Desktop\\blocking\\asset mecanique teste\\Assets\\script\\chest.cs",
+              "RelativeDocumentMoniker": "Assets\\script\\chest.cs",
+              "ToolTip": "C:\\Users\\Utilisateur\\Desktop\\blocking\\asset mecanique teste\\Assets\\script\\chest.cs",
+              "RelativeToolTip": "Assets\\script\\chest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T18:19:54.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerMouve.cs",
+              "DocumentMoniker": "C:\\Users\\Utilisateur\\Desktop\\blocking\\asset mecanique teste\\Assets\\script\\PlayerMouve.cs",
+              "RelativeDocumentMoniker": "Assets\\script\\PlayerMouve.cs",
+              "ToolTip": "C:\\Users\\Utilisateur\\Desktop\\blocking\\asset mecanique teste\\Assets\\script\\PlayerMouve.cs",
+              "RelativeToolTip": "Assets\\script\\PlayerMouve.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwEcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T16:40:34.574Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
