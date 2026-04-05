@@ -687,6 +687,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 29.9
       objectReference: {fileID: 0}
+    - target: {fileID: 5094328765030935304, guid: 404608f91e39f944d8d6e77eea27e16c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761420412979457635, guid: 404608f91e39f944d8d6e77eea27e16c, type: 3}
+      propertyPath: m_RayTraceProcedural
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7353876589244993443, guid: 404608f91e39f944d8d6e77eea27e16c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1086,8 +1094,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 3
+  sprintSpeed: 5
   mouseSensitivity: 2
   playerCamera: {fileID: 53735069}
+  sprintKey: 304
+  jumpHeight: 1
+  gravity: -20
+  jumpKey: 32
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  groundCheckDistance: 1.1
+  groundTime: 0.05
   enableHeadBob: 1
   headBobSpeed: 7.27
   headBobAmount: 0.1
