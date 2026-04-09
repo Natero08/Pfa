@@ -61,14 +61,20 @@ public class PlayerController : MonoBehaviour
         HandleHeadBob();
         HandleInteraction();
     }
-
+    private bool isJumping = false;
     private void HandleMovement()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
-
-        if (isGrounded)
+        
+        // Raycast depuis les pieds plutôt que le pivot
+        Vector3 feetPosition = transform.position + characterController.center
+                               - Vector3.up * (characterController.height / 2f);
+        isGrounded = Physics.Raycast(feetPosition, Vector3.down, groundCheckDistance, groundLayer);
+        
+        if (isGrounded && velocity.y <= 0f)
         {
             timeOnGround = groundTime;
+            if (velocity.y < 0f)
+                velocity.y = -2f;
         }
         else
         {
@@ -83,10 +89,15 @@ public class PlayerController : MonoBehaviour
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         characterController.Move(move * currentSpeed * Time.deltaTime);
 
+        if (timeOnGround <= 0f)
+            isJumping = false;
+
         // ← SAUT
-        if (Input.GetKeyDown(jumpKey) && timeOnGround > 0f)
+        if (Input.GetKeyDown(jumpKey) && timeOnGround > 0f && !isJumping)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            timeOnGround = 0f;
+            isJumping = true; // bloque le double saut jusqu'à retoucher le sol
         }
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
