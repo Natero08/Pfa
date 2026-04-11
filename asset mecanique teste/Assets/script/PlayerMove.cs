@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,6 +29,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode interactKey = KeyCode.E;
     [SerializeField] private LayerMask interactableLayer;
 
+    [Header("Port d'objet")]
+    [SerializeField] private Transform holdPoint;        // point devant la caméra
+    [SerializeField] private float holdDistance = 1.5f;
+    [SerializeField] private KeyCode dropKey = KeyCode.G;
+
+    private GameObject heldObject = null;
+    private Rigidbody heldRigidbody = null;
+
     private CharacterController characterController;
     private float xRotation = 0f;
     private GameObject currentInteractable;
@@ -44,8 +53,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
 
         if (playerCamera != null)
         {
@@ -64,12 +73,12 @@ public class PlayerController : MonoBehaviour
     private bool isJumping = false;
     private void HandleMovement()
     {
-        
+
         // Raycast depuis les pieds plutôt que le pivot
         Vector3 feetPosition = transform.position + characterController.center
                                - Vector3.up * (characterController.height / 2f);
         isGrounded = Physics.Raycast(feetPosition, Vector3.down, groundCheckDistance, groundLayer);
-        
+
         if (isGrounded && velocity.y <= 0f)
         {
             timeOnGround = groundTime;
@@ -143,6 +152,13 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInteraction()
     {
+        // Déposer l'objet tenu
+        if (Input.GetKeyDown(dropKey) && heldObject != null)
+        {
+            DropObject();
+            return;
+        }
+
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
@@ -152,12 +168,46 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(interactKey))
             {
-                currentInteractable.SendMessage("Interact");
+                // Si l'objet est portable
+                Pickable pickable = currentInteractable.GetComponent<Pickable>();
+                if (pickable != null)
+                {
+                    if (heldObject != null) DropObject(); // drop l'ancien
+                    PickUpObject(currentInteractable);
+                }
+                else
+                {
+                    currentInteractable.SendMessage("Interact");
+                }
             }
         }
         else
         {
             currentInteractable = null;
         }
+
+        // Déplacer l'objet tenu vers le holdPoint
+        if (heldObject != null)
+        {
+            Vector3 target = playerCamera.position + playerCamera.forward * holdDistance;
+            heldRigidbody.linearVelocity = (target - heldObject.transform.position) * 15f;
+            heldRigidbody.angularVelocity = Vector3.zero;
+        }
+    }
+
+    private void PickUpObject(GameObject obj)
+    {
+        heldObject = obj;
+        heldRigidbody = obj.GetComponent<Rigidbody>();
+        heldRigidbody.useGravity = false;
+        heldRigidbody.freezeRotation = true;
+    }
+
+    private void DropObject()
+    {
+        heldRigidbody.useGravity = true;
+        heldRigidbody.freezeRotation = false;
+        heldObject = null;
+        heldRigidbody = null;
     }
 }

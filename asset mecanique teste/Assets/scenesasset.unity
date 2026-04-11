@@ -204,7 +204,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 267043001}
   m_Father: {fileID: 1722485891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &53735070
@@ -1050,6 +1051,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1550514412580984892, guid: 342844e7dab25b348b1b51f2e00d15b9, type: 3}
+--- !u!1 &267043000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 267043001}
+  m_Layer: 6
+  m_Name: HoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &267043001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267043000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53735069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &286166723 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1724060792341563350, guid: 342844e7dab25b348b1b51f2e00d15b9, type: 3}
@@ -4289,7 +4321,7 @@ MonoBehaviour:
   jumpKey: 32
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 73
   groundCheckDistance: 1
   groundTime: 0.05
   enableHeadBob: 1
@@ -4301,6 +4333,9 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 72
+  holdPoint: {fileID: 0}
+  holdDistance: 1.5
+  dropKey: 103
 --- !u!143 &1722485890
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5052,6 +5087,8 @@ GameObject:
   - component: {fileID: 1835833660}
   - component: {fileID: 1835833659}
   - component: {fileID: 1835833658}
+  - component: {fileID: 1835833664}
+  - component: {fileID: 1835833663}
   m_Layer: 3
   m_Name: coffre
   m_TagString: Untagged
@@ -5164,6 +5201,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1835833663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835833657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48be21feb5e13a49854e6d4e94fa8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pickable
+--- !u!54 &1835833664
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835833657}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1870702321 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5252682845850649624, guid: 342844e7dab25b348b1b51f2e00d15b9, type: 3}
@@ -5668,9 +5744,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0649ac7c2fa3f5a4ab88e12d3332d4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PushableObject
-  pushForce: 10
-  maxSpeed: 5
+  pushForce: 15
+  maxSpeed: 20
   maxDistance: 3
+  minDistance: 0.3
 --- !u!54 &1966921727
 Rigidbody:
   m_ObjectHideFlags: 0

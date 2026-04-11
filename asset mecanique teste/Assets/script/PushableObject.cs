@@ -7,7 +7,7 @@ public class PushableObject : MonoBehaviour
     [SerializeField] private float pushForce = 12f;
     [SerializeField] private float maxSpeed = 4f;
     [SerializeField] private float maxDistance = 2.5f;
-
+    [SerializeField] private float minDistance = 0.3f; // ← ajoute cette ligne
     private Rigidbody rb;
     private bool isPushing = false;  // Toggle on/off
     private Transform pusher;
@@ -46,33 +46,31 @@ public class PushableObject : MonoBehaviour
 
     void Update()
     {
-        if (isPushing && pusher != null && Vector3.Distance(transform.position, pusher.position) < maxDistance)
+        if (!isPushing || pusher == null) return;
+
+        float distance = Vector3.Distance(transform.position, pusher.position);
+
+        if (distance > maxDistance)
         {
-            Push();
+            StopPush(); // trop loin
+            return;
         }
-        else if (isPushing)
+
+        if (distance < minDistance)
         {
-            StopPush(); // Trop loin
+            rb.linearVelocity = Vector3.zero; // stoppe l'objet
+            return;
         }
+
+        Push();
     }
 
     void Push()
     {
-        Vector3 direction = (pusher.position - transform.position);
-
-        // ⭐ REPOUSSE si trop proche
-        float distance = Vector3.Distance(transform.position, pusher.position);
-        if (distance < 1.2f) // Trop proche
-        {
-            direction = (transform.position - pusher.position).normalized;
-            rb.AddForce(direction * pushForce * 1.5f, ForceMode.Force);
-            return;
-        }
-
-        direction = Vector3.ProjectOnPlane(direction, Vector3.up).normalized;
+        Vector3 pushDirection = Vector3.ProjectOnPlane(pusher.forward, Vector3.up).normalized;
 
         if (rb.linearVelocity.magnitude < maxSpeed)
-            rb.AddForce(direction * pushForce);
+            rb.AddForce(pushDirection * pushForce, ForceMode.Force);
     }
 
     void StopPush()
