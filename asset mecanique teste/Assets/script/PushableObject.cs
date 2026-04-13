@@ -1,18 +1,17 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PushableObject : MonoBehaviour
 {
     [Header("Poussage")]
-    [SerializeField] private float pushForce = 12f;
+    [SerializeField] private float pushForce = 30f;
     [SerializeField] private float maxSpeed = 4f;
-    [SerializeField] private float maxDistance = 2.5f;
+    [SerializeField] private float maxDistance = 3f;
     [SerializeField] private float minDistance = 0.8f;
     [SerializeField] private float followDistance = 1.5f;
+
     private Rigidbody rb;
-    private bool isPushing = false;  // Toggle on/off
+    private bool isPushing = false;
     private Transform pusher;
 
     void Start()
@@ -21,21 +20,12 @@ public class PushableObject : MonoBehaviour
         rb.linearDamping = 3f;
         rb.angularDamping = 25f;
         rb.freezeRotation = true;
-
         gameObject.layer = LayerMask.NameToLayer("Pushable");
     }
 
     public void Interact()
     {
-        if (!HasArm())
-        {
-            Debug.Log("❌ Pas de bras !");
-            return;
-        }
-
-        // ⭐ TOGGLE : E = start/stop
         isPushing = !isPushing;
-
         if (isPushing)
         {
             pusher = FindPlayer();
@@ -51,17 +41,11 @@ public class PushableObject : MonoBehaviour
     {
         if (!isPushing || pusher == null) return;
 
-        float distance = Vector3.Distance(transform.position, pusher.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, pusher.position);
 
-        if (distance > maxDistance)
+        if (distanceToPlayer > maxDistance)
         {
-            StopPush(); // trop loin
-            return;
-        }
-
-        if (distance < minDistance)
-        {
-            rb.linearVelocity = Vector3.zero; // stoppe l'objet
+            StopPush();
             return;
         }
 
@@ -70,20 +54,19 @@ public class PushableObject : MonoBehaviour
 
     void Push()
     {
-        Vector3 forward = Vector3.ProjectOnPlane(pusher.forward, Vector3.up).normalized;
+        // L'objet va simplement dans la direction où marche le joueur
+        Vector3 playerVelocity = pusher.GetComponent<CharacterController>().velocity;
+        playerVelocity.y = 0f;
 
-        // Position cible : devant le joueur à followDistance
-        Vector3 targetPosition = pusher.position + forward * followDistance;
-        targetPosition.y = transform.position.y;
+        // Si le joueur ne bouge pas, on ne pousse pas
+        if (playerVelocity.magnitude < 0.1f)
+        {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
 
-        float distance = Vector3.Distance(transform.position, targetPosition);
-        Vector3 direction = (targetPosition - transform.position).normalized;
+        rb.AddForce(playerVelocity.normalized * pushForce, ForceMode.Force);
 
-        // Force proportionnelle à la distance, sans blocage par dot
-        float forceMult = Mathf.Clamp(distance, 0.5f, 3f);
-        rb.AddForce(direction * pushForce * forceMult, ForceMode.Force);
-
-        // Limite la vitesse manuellement
         if (rb.linearVelocity.magnitude > maxSpeed)
             rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
     }
@@ -98,12 +81,10 @@ public class PushableObject : MonoBehaviour
 
     Transform FindPlayer()
     {
-        Collider[] nearby = Physics.OverlapSphere(transform.position, 2f);
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 3f);
         foreach (var col in nearby)
             if (col.CompareTag("Player"))
                 return col.transform;
         return null;
     }
-
-    bool HasArm() { return true; }
 }
