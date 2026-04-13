@@ -152,7 +152,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInteraction()
     {
-        // Déposer l'objet tenu
         if (Input.GetKeyDown(dropKey) && heldObject != null)
         {
             DropObject();
@@ -162,17 +161,17 @@ public class PlayerController : MonoBehaviour
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, interactionDistance, interactableLayer))
+        if (Physics.SphereCast(ray, 0.1f, out hit, interactionDistance, interactableLayer))
         {
             currentInteractable = hit.collider.gameObject;
+            
 
             if (Input.GetKeyDown(interactKey))
             {
-                // Si l'objet est portable
                 Pickable pickable = currentInteractable.GetComponent<Pickable>();
                 if (pickable != null)
                 {
-                    if (heldObject != null) DropObject(); // drop l'ancien
+                    if (heldObject != null) DropObject();
                     PickUpObject(currentInteractable);
                 }
                 else
@@ -184,9 +183,9 @@ public class PlayerController : MonoBehaviour
         else
         {
             currentInteractable = null;
+            
         }
 
-        // Déplacer l'objet tenu vers le holdPoint
         if (heldObject != null)
         {
             Vector3 target = playerCamera.position + playerCamera.forward * holdDistance;
@@ -194,7 +193,6 @@ public class PlayerController : MonoBehaviour
             heldRigidbody.angularVelocity = Vector3.zero;
         }
     }
-
     private void PickUpObject(GameObject obj)
     {
         heldObject = obj;

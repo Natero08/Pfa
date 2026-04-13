@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PushableObject : MonoBehaviour
@@ -7,7 +9,8 @@ public class PushableObject : MonoBehaviour
     [SerializeField] private float pushForce = 12f;
     [SerializeField] private float maxSpeed = 4f;
     [SerializeField] private float maxDistance = 2.5f;
-    [SerializeField] private float minDistance = 0.3f; // ← ajoute cette ligne
+    [SerializeField] private float minDistance = 0.8f;
+    [SerializeField] private float followDistance = 1.5f;
     private Rigidbody rb;
     private bool isPushing = false;  // Toggle on/off
     private Transform pusher;
@@ -67,16 +70,29 @@ public class PushableObject : MonoBehaviour
 
     void Push()
     {
-        Vector3 pushDirection = Vector3.ProjectOnPlane(pusher.forward, Vector3.up).normalized;
+        Vector3 forward = Vector3.ProjectOnPlane(pusher.forward, Vector3.up).normalized;
 
-        if (rb.linearVelocity.magnitude < maxSpeed)
-            rb.AddForce(pushDirection * pushForce, ForceMode.Force);
+        // Position cible : devant le joueur à followDistance
+        Vector3 targetPosition = pusher.position + forward * followDistance;
+        targetPosition.y = transform.position.y;
+
+        float distance = Vector3.Distance(transform.position, targetPosition);
+        Vector3 direction = (targetPosition - transform.position).normalized;
+
+        // Force proportionnelle à la distance, sans blocage par dot
+        float forceMult = Mathf.Clamp(distance, 0.5f, 3f);
+        rb.AddForce(direction * pushForce * forceMult, ForceMode.Force);
+
+        // Limite la vitesse manuellement
+        if (rb.linearVelocity.magnitude > maxSpeed)
+            rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
     }
 
     void StopPush()
     {
         isPushing = false;
         pusher = null;
+        rb.linearVelocity = Vector3.zero;
         Debug.Log($"⏹️ ARRÊT {name}");
     }
 
