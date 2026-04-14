@@ -2659,7 +2659,7 @@ Transform:
   m_GameObject: {fileID: 915787012}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.330002, y: -4.25, z: -270.55002}
+  m_LocalPosition: {x: 19.330002, y: -5.27, z: -276.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2886,9 +2886,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 875718a6c41e0bb4599e74ac36310cfa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1433866902}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 875718a6c41e0bb4599e74ac36310cfa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1433866901}
   m_SourcePrefab: {fileID: 100100000, guid: 875718a6c41e0bb4599e74ac36310cfa, type: 3}
 --- !u!1 &995447052 stripped
 GameObject:
@@ -3790,33 +3787,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 875718a6c41e0bb4599e74ac36310cfa, type: 3}
   m_PrefabInstance: {fileID: 961519020}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &1433866901
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433866900}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &1433866902
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4065,7 +4035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 875718a6c41e0bb4599e74ac36310cfa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.4327
+      value: -4.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 875718a6c41e0bb4599e74ac36310cfa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4113,9 +4083,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 875718a6c41e0bb4599e74ac36310cfa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2052113817}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 875718a6c41e0bb4599e74ac36310cfa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2052113816}
   m_SourcePrefab: {fileID: 100100000, guid: 875718a6c41e0bb4599e74ac36310cfa, type: 3}
 --- !u!1 &1521467357 stripped
 GameObject:
@@ -6229,7 +6196,7 @@ Transform:
   m_GameObject: {fileID: 1966921717}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.99937004, z: -0, w: -0.035490613}
-  m_LocalPosition: {x: 10.24, y: -2.38, z: -265.22}
+  m_LocalPosition: {x: 10.24, y: -4.9, z: -265.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6338,33 +6305,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 875718a6c41e0bb4599e74ac36310cfa, type: 3}
   m_PrefabInstance: {fileID: 1491925891}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &2052113816
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052113815}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &2052113817
 BoxCollider:
   m_ObjectHideFlags: 0
