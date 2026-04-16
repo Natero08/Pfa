@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     private float xRotation = 0f;
     private GameObject currentInteractable;
 
+    public float CurrentSpeed => Input.GetKey(sprintKey) ? sprintSpeed : moveSpeed;
+
     private float headBobTimer = 0f;
     private Vector3 defaultCameraPosition;
     private float currentHeadBobY = 0f;
@@ -50,8 +52,12 @@ public class PlayerController : MonoBehaviour
     private float timeOnGround;
     private bool isGrounded;
 
+    private Vector3 lastPosition;
+    public Vector3 Velocity { get; private set; }
+
     private void Start()
     {
+        lastPosition = transform.position;
         characterController = GetComponent<CharacterController>();
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
@@ -65,6 +71,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Velocity = (transform.position - lastPosition) / Time.deltaTime;
+        lastPosition = transform.position;
+
         HandleMovement();
         HandleMouseLook();
         HandleHeadBob();
