@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 lastPosition;
     public Vector3 Velocity { get; private set; }
+    public bool IsInteracting { get; set; } = false;
 
     private void Start()
     {
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
         bool isSprinting = Input.GetKey(sprintKey);
         float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
 
-        float moveX = Input.GetAxis("Horizontal");
+        float moveX = IsInteracting ? 0f : Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         characterController.Move(move * currentSpeed * Time.deltaTime);
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             timeOnGround = 0f;
-            isJumping = true; // bloque le double saut jusqu'à retoucher le sol
+            isJumping = true;
         }
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
@@ -137,7 +138,9 @@ public class PlayerController : MonoBehaviour
     {
         if (!enableHeadBob || playerCamera == null) return;
 
-        bool isMoving = Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
+        bool isMoving = IsInteracting
+    ? Input.GetAxis("Vertical") != 0
+    : Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
         bool isGroundedForBob = characterController.isGrounded;
 
         if (isMoving && isGroundedForBob)

@@ -10,8 +10,6 @@ public class PushableObject : MonoBehaviour
     private bool isPushing = false;
     private Transform pusher;
     private PlayerController playerControllerScript;
-
-    // ✅ Offset initial entre le joueur et le cube au moment de l'interaction
     private Vector3 initialOffset;
 
     void Start()
@@ -46,9 +44,11 @@ public class PushableObject : MonoBehaviour
                 return;
             }
 
-            // ✅ On mémorise l'offset cube -> joueur au moment de l'interaction
             initialOffset = transform.position - pusher.position;
             initialOffset.y = 0f;
+
+            // ✅ On bloque les mouvements latéraux du joueur
+            playerControllerScript.IsInteracting = true;
 
             Debug.Log($"🚀 DÉBUT poussage {name}");
         }
@@ -74,27 +74,26 @@ public class PushableObject : MonoBehaviour
     {
         if (!isPushing || pusher == null) return;
 
-        float moveX = Input.GetAxis("Horizontal");
+        // ✅ Mouvement latéral bloqué, uniquement avant/arrière
         float moveZ = Input.GetAxis("Vertical");
 
-        if (Mathf.Abs(moveX) < 0.1f && Mathf.Abs(moveZ) < 0.1f)
+        if (Mathf.Abs(moveZ) < 0.1f)
         {
             rb.linearVelocity = Vector3.zero;
 
-            // ✅ Quand le joueur s'arrête, on recentre le cube sur son offset initial
             Vector3 targetPosition = pusher.position + initialOffset;
             targetPosition.y = transform.position.y;
             rb.MovePosition(Vector3.Lerp(rb.position, targetPosition, 0.2f));
             return;
         }
 
-        Vector3 inputDirection = pusher.right * moveX + pusher.forward * moveZ;
+        // ✅ Uniquement la direction avant/arrière du joueur
+        Vector3 inputDirection = pusher.forward * moveZ;
         inputDirection.y = 0f;
         inputDirection.Normalize();
 
         float speed = playerControllerScript.CurrentSpeed;
 
-        // ✅ On déplace le cube ET on corrige progressivement le drift latéral
         Vector3 desiredPosition = pusher.position + initialOffset + inputDirection * speed * Time.fixedDeltaTime;
         desiredPosition.y = transform.position.y;
 
@@ -105,9 +104,14 @@ public class PushableObject : MonoBehaviour
     {
         isPushing = false;
         pusher = null;
-        playerControllerScript = null;
         initialOffset = Vector3.zero;
         rb.linearVelocity = Vector3.zero;
+
+        // ✅ On débloque AVANT de mettre à null
+        if (playerControllerScript != null)
+            playerControllerScript.IsInteracting = false;
+
+        playerControllerScript = null; // ✅ Mis à null EN DERNIER
         Debug.Log($"⏹️ ARRÊT {name}");
     }
 
