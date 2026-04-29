@@ -14,6 +14,15 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         // Exemple : si j'appuie sur une touche, j'active l'animation
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.Z))
+
+        {
+            anim.SetBool("saut", true);
+        }
+        else
+        {
+            anim.SetBool("saut", false);
+        }
         if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.W))
         {
             anim.SetBool("walking", true);
@@ -21,6 +30,14 @@ public class PlayerAnimation : MonoBehaviour
         else
         {
             anim.SetBool("walking", false);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            anim.SetBool("walking_back", true);
+        }
+        else
+        {
+            anim.SetBool("walking_back", false);
         }
     }
 }
