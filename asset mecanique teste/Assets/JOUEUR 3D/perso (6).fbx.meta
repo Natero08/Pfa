@@ -1,0 +1,720 @@
+fileFormatVersion: 2
+guid: 917f7faace8057a4e8019e45ebef75c5
+ModelImporter:
+  serializedVersion: 24200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: perso (6)(Clone)
+      parentName: 
+      position: {x: -0, y: 0.970334, z: 0}
+      rotation: {x: -0.7071067, y: -0.00000009415697, z: -0.00000009415696, w: 0.7071068}
+      scale: {x: 0.29104567, y: 0.29104567, z: 0.28337112}
+    - name: chest
+      parentName: perso (6)(Clone)
+      position: {x: 0.013547151, y: 0.00035470462, z: -2.6573095}
+      rotation: {x: 0.6953327, y: 0.0043690596, z: -0.00323664, w: 0.7186674}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cube.081
+      parentName: chest
+      position: {x: 0.008445982, y: 0.08152139, z: 0.027034836}
+      rotation: {x: 0.016500076, y: -0.0008007419, z: 0.0053780437, w: 0.9998491}
+      scale: {x: 0.030731214, y: 0.03528941, z: 0.03435887}
+    - name: shoulder.L
+      parentName: chest
+      position: {x: 0.0000000010477379, y: 1.4870962, z: -0.0000000022591848}
+      rotation: {x: 0.021850385, y: 0.026967963, z: 0.68811077, w: 0.724775}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: arm.L
+      parentName: shoulder.L
+      position: {x: 0.00000010452641, y: 0.75698626, z: 0.000000002561137}
+      rotation: {x: 0.08699991, y: -0.10230649, z: 0.6872593, w: 0.71389014}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Icosphere.068
+      parentName: arm.L
+      position: {x: -0.009913266, y: -0.0012179017, z: -0.003768921}
+      rotation: {x: -0.7027176, y: 0.7053166, z: 0.059382662, w: -0.07204293}
+      scale: {x: -0.0017929176, y: -0.0018398387, z: -0.0017945966}
+    - name: avtBras.L
+      parentName: arm.L
+      position: {x: 0.000000027939677, y: 0.9755003, z: -0.000000016530976}
+      rotation: {x: 0.033027425, y: -0.759163, z: 0.04315963, w: 0.64862776}
+      scale: {x: 1.0000002, y: 1, z: 1}
+    - name: Icosphere.077
+      parentName: avtBras.L
+      position: {x: -0.014264166, y: 0.0017852783, z: 0.0100393295}
+      rotation: {x: -0.6936336, y: 0.7142534, z: 0.073302746, w: -0.057803355}
+      scale: {x: -0.0014923458, y: -0.0015314005, z: -0.0014937433}
+    - name: avtBras.L.001
+      parentName: avtBras.L
+      position: {x: 0.000000017229468, y: 0.89201146, z: 0.00000001071021}
+      rotation: {x: 0.023755737, y: 0.15790665, z: -0.03718364, w: 0.9864677}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: Icosphere.056
+      parentName: avtBras.L.001
+      position: {x: -0.003197819, y: 0.00008046627, z: -0.0041067004}
+      rotation: {x: 0.70156366, y: 0.0211156, z: 0.71228623, w: -0.0032952325}
+      scale: {x: -0.0011242424, y: -0.0011242426, z: -0.00115469}
+    - name: index.L
+      parentName: avtBras.L.001
+      position: {x: 0.0000000721775, y: 0.33143538, z: -0.00000005075708}
+      rotation: {x: -0.0057578264, y: -0.013678342, z: -0.2740652, w: 0.9615966}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: avtBras.L.006
+      parentName: index.L
+      position: {x: -0, y: 0.2247585, z: -0.000000007450581}
+      rotation: {x: -0.00407313, y: 0.002793084, z: 0.2817484, w: 0.95947564}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: Icosphere.073
+      parentName: avtBras.L.006
+      position: {x: 0.0010325909, y: -0.0009968728, z: -0.0047801137}
+      rotation: {x: 0.7070759, y: 0.0066224057, z: 0.70707566, w: -0.0066224076}
+      scale: {x: -0.00029007797, y: -0.00029007802, z: -0.00029793414}
+    - name: avtBras.L.007
+      parentName: avtBras.L.006
+      position: {x: -0.000000018626451, y: 0.13017178, z: -0.000000078231096}
+      rotation: {x: 0.26957357, y: 0.0025246323, z: 0.009018952, w: 0.96293426}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Icosphere.061
+      parentName: avtBras.L.007
+      position: {x: -0.001423344, y: 0.0016587898, z: -0.004780054}
+      rotation: {x: 0.70710695, y: -0.00000005338506, z: 0.7071066, w: 0.00000005338509}
+      scale: {x: -0.00029007794, y: -0.000290078, z: -0.00029793417}
+    - name: avtBras.L.017
+      parentName: avtBras.L.007
+      position: {x: 0.0000000114087015, y: 0.12111664, z: -0.000000070780516}
+      rotation: {x: -0.00000014342997, y: -0.000000052214553, z: 0.009357011, w: 0.99995625}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Icosphere.060
+      parentName: avtBras.L.017
+      position: {x: 0.0041274726, y: 0.0044881105, z: -0.0049338937}
+      rotation: {x: 0.70679235, y: 0.03941272, z: 0.7042084, w: 0.0546058}
+      scale: {x: -0.000290078, y: -0.00029007802, z: -0.00029793402}
+    - name: avtBras.L.017_end
+      parentName: avtBras.L.017
+      position: {x: -0, y: 0.08685941, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: majeur.L
+      parentName: avtBras.L.001
+      position: {x: 0.0000000721775, y: 0.33143538, z: -0.00000005075708}
+      rotation: {x: -0.006299886, y: -0.010077195, z: -0.06780942, w: 0.99762756}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: avtBras.L.008
+      parentName: majeur.L
+      position: {x: 0.000000048428774, y: 0.18525459, z: -0.00000009033829}
+      rotation: {x: -0.005588754, y: 0.0015335735, z: 0.08257208, w: 0.99656826}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: Icosphere.067
+      parentName: avtBras.L.008
+      position: {x: -0.0024784803, y: 0.003170386, z: -0.004779756}
+      rotation: {x: 0.7071048, y: 0.0017880047, z: 0.7071043, w: -0.0017880058}
+      scale: {x: -0.000290078, y: -0.000290078, z: -0.00029793422}
+    - name: avtBras.L.009
+      parentName: avtBras.L.008
+      position: {x: -0.000000011175871, y: 0.16068271, z: 0.00000006984919}
+      rotation: {x: 0.2695809, y: 0.0015504916, z: 0.0055416045, w: 0.9629606}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Icosphere.062
+      parentName: avtBras.L.009
+      position: {x: -0.0032826364, y: -0.001214549, z: -0.0047802925}
+      rotation: {x: 0.70710343, y: -0.0022810358, z: 0.7071028, w: 0.0022810379}
+      scale: {x: -0.00029007794, y: -0.00029007797, z: -0.0002979341}
+    - name: avtBras.L.016
+      parentName: avtBras.L.009
+      position: {x: 0.000000015133992, y: 0.12596552, z: 0.00000010011718}
+      rotation: {x: 0.000000016763819, y: 0.00000038766336, z: 0.0011399194, w: 0.99999934}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: Icosphere.059
+      parentName: avtBras.L.016
+      position: {x: -0.0024602115, y: 0.00021162629, z: -0.0047796965}
+      rotation: {x: 0.7071002, y: -0.003087047, z: 0.7071, w: 0.003087048}
+      scale: {x: -0.00029007794, y: -0.00029007794, z: -0.00029793414}
+    - name: avtBras.L.016_end
+      parentName: avtBras.L.016
+      position: {x: -0, y: 0.0930886, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: anulaire.L
+      parentName: avtBras.L.001
+      position: {x: 0.0000000721775, y: 0.33143538, z: -0.00000005075708}
+      rotation: {x: -0.008710753, y: -0.0031555786, z: 0.20413329, w: 0.9788993}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: avtBras.L.010
+      parentName: anulaire.L
+      position: {x: -0.0000000037252903, y: 0.19633268, z: -0.000000014901161}
+      rotation: {x: -0.0051321336, y: -0.0018115697, z: -0.180679, w: 0.98352706}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999999}
+    - name: Icosphere.066
+      parentName: avtBras.L.010
+      position: {x: 0.0023355782, y: 0.0031516105, z: -0.004779637}
+      rotation: {x: 0.70709145, y: -0.004698126, z: 0.7070909, w: 0.00469813}
+      scale: {x: -0.00029007794, y: -0.00029007794, z: -0.00029793408}
+    - name: avtBras.L.011
+      parentName: avtBras.L.010
+      position: {x: -0.000000034458935, y: 0.14417818, z: 0.000000063329935}
+      rotation: {x: 0.26951876, y: -0.005988298, z: -0.021390466, w: 0.96273893}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Icosphere.063
+      parentName: avtBras.L.011
+      position: {x: 0.004196942, y: 0.00049339235, z: -0.0047801137}
+      rotation: {x: 0.70702136, y: 0.011009457, z: 0.70702076, w: -0.011009466}
+      scale: {x: -0.00029007797, y: -0.000290078, z: -0.0002979342}
+    - name: avtBras.L.015
+      parentName: avtBras.L.011
+      position: {x: -0.000000026077032, y: 0.10624856, z: -0.00000008940697}
+      rotation: {x: -0.0000000018626458, y: 0.000000008847565, z: -0.00030086335, w: 0.99999994}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: Icosphere.058
+      parentName: avtBras.L.015
+      position: {x: 0.0009008646, y: 0.000026203692, z: -0.0047795773}
+      rotation: {x: 0.707018, y: 0.011222271, z: 0.7070174, w: -0.0112222815}
+      scale: {x: -0.000290078, y: -0.00029007797, z: -0.0002979341}
+    - name: avtBras.L.015_end
+      parentName: avtBras.L.015
+      position: {x: -0, y: 0.08776103, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: auriculaire.L
+      parentName: avtBras.L.001
+      position: {x: 0.0000000721775, y: 0.33143538, z: -0.00000005075708}
+      rotation: {x: -0.010917954, y: -0.0000658536, z: 0.37358707, w: 0.9275309}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: avtBras.L.012
+      parentName: auriculaire.L
+      position: {x: -0.000000052154064, y: 0.24882175, z: 0.000000067055225}
+      rotation: {x: -0.0036425889, y: -0.0023902096, z: -0.34268925, w: 0.93943876}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Icosphere.065
+      parentName: avtBras.L.012
+      position: {x: -0.0004746914, y: 0.0005668402, z: -0.0047798753}
+      rotation: {x: 0.7070178, y: -0.011227416, z: 0.70701754, w: 0.01122742}
+      scale: {x: -0.000290078, y: -0.00029007794, z: -0.0002979341}
+    - name: avtBras.L.013
+      parentName: avtBras.L.012
+      position: {x: -0.000000037252903, y: 0.13337657, z: 0.000000055879354}
+      rotation: {x: 0.26939118, y: -0.010229636, z: -0.03654192, w: 0.96228296}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: Icosphere.064
+      parentName: avtBras.L.013
+      position: {x: 0.000023663044, y: 0.0000661239, z: -0.0047802925}
+      rotation: {x: 0.70693463, y: 0.015609722, z: 0.70693433, w: -0.015609728}
+      scale: {x: -0.000290078, y: -0.00029007797, z: -0.00029793408}
+    - name: avtBras.L.014
+      parentName: avtBras.L.013
+      position: {x: -0.000000044703484, y: 0.08808264, z: -0.000000029802322}
+      rotation: {x: -0.0000000018630995, y: 0.00000012191656, z: 0.022075633, w: 0.99975634}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Icosphere.057
+      parentName: avtBras.L.014
+      position: {x: -0.00014531612, y: 0.00014296174, z: -0.0047804713}
+      rotation: {x: 0.70710695, y: -0.00000013767874, z: 0.7071066, w: 0.00000013767881}
+      scale: {x: -0.000290078, y: -0.000290078, z: -0.0002979341}
+    - name: avtBras.L.014_end
+      parentName: avtBras.L.014
+      position: {x: -0, y: 0.08855963, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pouce.L
+      parentName: avtBras.L.001
+      position: {x: 0.0000000721775, y: 0.33143538, z: -0.00000005075708}
+      rotation: {x: -0.0044555278, y: -0.014015144, z: -0.647255, w: 0.76213175}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: avtBras.L.019
+      parentName: pouce.L
+      position: {x: 0.00000007264316, y: 0.22042522, z: 0.0000000055879354}
+      rotation: {x: -0.019725498, y: -0.010985811, z: 0.56938905, w: 0.82175815}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Icosphere.078
+      parentName: avtBras.L.019
+      position: {x: -0.007678032, y: -0.0023028105, z: -0.0028093457}
+      rotation: {x: 0.6988472, y: 0.06579106, z: 0.7056029, w: -0.09699913}
+      scale: {x: -0.00029007794, y: -0.00029007802, z: -0.0002979341}
+    - name: avtBras.L.020
+      parentName: avtBras.L.019
+      position: {x: -0.000000029802322, y: 0.13043201, z: -0.00000004749745}
+      rotation: {x: 0.022258084, y: -0.0037900803, z: 0.07079262, w: 0.99723554}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1}
+    - name: Icosphere.081
+      parentName: avtBras.L.020
+      position: {x: -0.0018282086, y: 0.00464762, z: 0.0031910539}
+      rotation: {x: 0.7064061, y: 0.031473428, z: 0.7064059, w: -0.031473435}
+      scale: {x: -0.00022536598, y: -0.00022536598, z: -0.00023146952}
+    - name: avtBras.L.020_end
+      parentName: avtBras.L.020
+      position: {x: -0, y: 0.091385305, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: neck
+      parentName: chest
+      position: {x: 0.0000000010477379, y: 1.4870962, z: -0.0000000022591848}
+      rotation: {x: 0.05157127, y: 0.20858414, z: 0.02112048, w: 0.9764154}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: head
+      parentName: neck
+      position: {x: 0.000000007450581, y: 0.49784422, z: -0.000000008381903}
+      rotation: {x: -0.014003177, y: -0.20911184, z: 0.007906952, w: 0.9777595}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: head_end
+      parentName: head
+      position: {x: -0, y: 0.64125335, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shoulder.R
+      parentName: chest
+      position: {x: 0.0000000010477379, y: 1.4870962, z: -0.0000000022591848}
+      rotation: {x: 0.03824465, y: -0.011396835, z: -0.6813548, w: 0.73086464}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm.R
+      parentName: shoulder.R
+      position: {x: -0.000000081877715, y: 0.6922935, z: -0.000000003259629}
+      rotation: {x: -0.04172151, y: -0.011528095, z: -0.70956534, w: 0.70330894}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cube.036
+      parentName: arm.R
+      position: {x: 0.0021548271, y: 0.014218748, z: 0.0008914657}
+      rotation: {x: 0.0019540372, y: 0.012516802, z: 0.7121445, w: 0.70191866}
+      scale: {x: 0.02834991, y: 0.029117715, z: 0.02834991}
+    - name: avtBras.R
+      parentName: arm.R
+      position: {x: 0.000000056257704, y: 0.99401873, z: -9.313226e-10}
+      rotation: {x: 0.028241929, y: 0.6916181, z: -0.03999764, w: 0.72060186}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Cube.035
+      parentName: avtBras.R
+      position: {x: -0.0041600205, y: -0.0018489957, z: 0.013085544}
+      rotation: {x: 0.008513712, y: -0.008364899, z: 0.7129791, w: 0.7010837}
+      scale: {x: 0.022746341, y: 0.023362393, z: 0.022746345}
+    - name: avtBras.R.001
+      parentName: avtBras.R
+      position: {x: -0.0000000018626451, y: 0.8930822, z: -0.00000005820766}
+      rotation: {x: 0.03374593, y: -0.0042674136, z: 0.014532552, w: 0.9993157}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: Icosphere.096
+      parentName: avtBras.R.001
+      position: {x: -0.0015132278, y: -0.0041457713, z: -0.0005351305}
+      rotation: {x: -0.011029596, y: 0.71008813, z: -0.019769311, w: 0.7037488}
+      scale: {x: 0.0011242424, y: 0.0011242422, z: 0.0011546906}
+    - name: index.R
+      parentName: avtBras.R.001
+      position: {x: -0.000000009313226, y: 0.3591501, z: -0.00000007357448}
+      rotation: {x: -0.018812666, y: 0.011851833, z: 0.34563398, w: 0.938106}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: avtBras.R.006
+      parentName: index.R
+      position: {x: 0.00000007357448, y: 0.20595568, z: 0.0000000607688}
+      rotation: {x: 0.000000097923355, y: 0.000000048681542, z: -0.35458517, w: 0.9350237}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Icosphere.083
+      parentName: avtBras.R.006
+      position: {x: -0.00219059, y: -0.001412496, z: -0.0067002177}
+      rotation: {x: -0.002321757, y: 0.7071029, z: 0.0023217564, w: 0.707103}
+      scale: {x: 0.00029007794, y: 0.0002900779, z: 0.00029793417}
+    - name: avtBras.R.007
+      parentName: avtBras.R.006
+      position: {x: -0.000000011175871, y: 0.13250428, z: 0.000000020081643}
+      rotation: {x: -0.023497978, y: -0.00007664926, z: 0.013381875, w: 0.9996343}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: Icosphere.091
+      parentName: avtBras.R.007
+      position: {x: -0.003087446, y: -0.00069833547, z: -0.00674206}
+      rotation: {x: 0.023757111, y: 0.706875, z: 0.009474191, w: 0.7068759}
+      scale: {x: 0.00029007797, y: 0.00029007794, z: 0.00029793414}
+    - name: avtBras.R.017
+      parentName: avtBras.R.007
+      position: {x: -0.0000000055879354, y: 0.11976632, z: 0.000000018102583}
+      rotation: {x: 0.02349732, y: 0.00019165777, z: -0.018261902, w: 0.9995571}
+      scale: {x: 0.99999994, y: 1, z: 0.9999999}
+    - name: Icosphere.092
+      parentName: avtBras.R.017
+      position: {x: -0.00061808527, y: -0.002079904, z: -0.0010737181}
+      rotation: {x: -0.0057738004, y: 0.7070829, z: 0.005773796, w: 0.70708346}
+      scale: {x: 0.000290078, y: 0.00029007788, z: 0.00029793414}
+    - name: avtBras.R.017_end
+      parentName: avtBras.R.017
+      position: {x: -0, y: 0.09953538, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: majeur.R
+      parentName: avtBras.R.001
+      position: {x: -0.000000009313226, y: 0.3591501, z: -0.00000007357448}
+      rotation: {x: -0.02107656, y: 0.0070818495, z: 0.11470754, w: 0.9931505}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: avtBras.R.008
+      parentName: majeur.R
+      position: {x: -0.000000026077032, y: 0.16093211, z: -0.000000040512532}
+      rotation: {x: 0.019991152, y: -0.0023815003, z: -0.11829182, w: 0.9927748}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Icosphere.085
+      parentName: avtBras.R.008
+      position: {x: -0.0020449758, y: -0.002557516, z: -0.006700337}
+      rotation: {x: 0.0018222396, y: 0.7071043, z: -0.0018222388, w: 0.7071046}
+      scale: {x: 0.00029007797, y: 0.0002900779, z: 0.0002979342}
+    - name: avtBras.R.009
+      parentName: avtBras.R.008
+      position: {x: -0.0000000033178367, y: 0.15766726, z: -0.000000022817403}
+      rotation: {x: 0.26705906, y: -0.0015552284, z: -0.005612041, w: 0.96366256}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+    - name: Icosphere.090
+      parentName: avtBras.R.009
+      position: {x: -0.0011929274, y: -0.0039791614, z: -0.006700039}
+      rotation: {x: -0.0022956373, y: 0.70710284, z: 0.0022956356, w: 0.7071033}
+      scale: {x: 0.00029007794, y: 0.0002900779, z: 0.00029793422}
+    - name: avtBras.R.016
+      parentName: avtBras.R.009
+      position: {x: 0.000000006519258, y: 0.12515992, z: -0.0000000088475645}
+      rotation: {x: 0.0000000050349676, y: -0.00000016810387, z: -0.0013409206, w: 0.9999991}
+      scale: {x: 1, y: 0.9999998, z: 1}
+    - name: Icosphere.093
+      parentName: avtBras.R.016
+      position: {x: -0.0020161495, y: -0.0017575324, z: -0.0067000985}
+      rotation: {x: -0.003243813, y: 0.7070993, z: 0.0032438128, w: 0.7070994}
+      scale: {x: 0.00029007794, y: 0.00029007788, z: 0.00029793417}
+    - name: avtBras.R.016_end
+      parentName: avtBras.R.016
+      position: {x: -0, y: 0.08858863, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: anulaire.R
+      parentName: avtBras.R.001
+      position: {x: -0.000000009313226, y: 0.3591501, z: -0.00000007357448}
+      rotation: {x: -0.022224285, y: 0.00067614316, z: -0.17777151, w: 0.98382056}
+      scale: {x: 1, y: 1, z: 1}
+    - name: avtBras.R.010
+      parentName: anulaire.R
+      position: {x: 0.0000000037252903, y: 0.16602178, z: -0.0000000018626451}
+      rotation: {x: 0.019843305, y: 0.003400065, z: 0.16883604, w: 0.9854385}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Icosphere.086
+      parentName: avtBras.R.010
+      position: {x: 0.002047956, y: -0.0025561005, z: -0.0067003965}
+      rotation: {x: -0.0020514573, y: 0.7071035, z: 0.0020514554, w: 0.70710415}
+      scale: {x: 0.00029007797, y: 0.0002900779, z: 0.00029793425}
+    - name: avtBras.R.011
+      parentName: avtBras.R.010
+      position: {x: 0.000000007450581, y: 0.14007884, z: 0.00000006146729}
+      rotation: {x: 0.26706243, y: 0.00077459833, z: 0.0027957987, w: 0.9636749}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: Icosphere.089
+      parentName: avtBras.R.011
+      position: {x: 0.0012207627, y: -0.0012985915, z: -0.0067002177}
+      rotation: {x: -0.000000054155212, y: 0.7071066, z: 0.000000054155183, w: 0.70710695}
+      scale: {x: 0.000290078, y: 0.00029007794, z: 0.0002979342}
+    - name: avtBras.R.015
+      parentName: avtBras.R.011
+      position: {x: -0.000000007450581, y: 0.105391264, z: -0.00000014156103}
+      rotation: {x: 0.000000001520735, y: 0.00000007869986, z: -0.008851456, w: 0.99996084}
+      scale: {x: 0.9999998, y: 0.9999998, z: 0.9999999}
+    - name: Icosphere.094
+      parentName: avtBras.R.015
+      position: {x: 0.0012361556, y: -0.0008354634, z: -0.006700605}
+      rotation: {x: -0.0062589603, y: 0.7070789, z: 0.0062589566, w: 0.7070793}
+      scale: {x: 0.00029007797, y: 0.00029007797, z: 0.00029793417}
+    - name: avtBras.R.015_end
+      parentName: avtBras.R.015
+      position: {x: -0, y: 0.09182008, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: auriculaire.R
+      parentName: avtBras.R.001
+      position: {x: -0.000000009313226, y: 0.3591501, z: -0.00000007357448}
+      rotation: {x: -0.021820847, y: -0.0042687086, z: -0.39150333, w: 0.91990805}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+    - name: avtBras.R.012
+      parentName: auriculaire.R
+      position: {x: 0.000000006519258, y: 0.21860188, z: -0.000000011175871}
+      rotation: {x: 0.01866142, y: 0.0075540575, z: 0.3751549, w: 0.9267435}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: Icosphere.087
+      parentName: avtBras.R.012
+      position: {x: -0.00069732964, y: 0.00015288591, z: -0.0067003965}
+      rotation: {x: -0.008161681, y: 0.70705956, z: 0.008161678, w: 0.7070598}
+      scale: {x: 0.00029007797, y: 0.00029007782, z: 0.00029793422}
+    - name: avtBras.R.013
+      parentName: avtBras.R.012
+      position: {x: 0.000000011175871, y: 0.13569817, z: -0.000000007450581}
+      rotation: {x: 0.26667792, y: 0.014347705, z: 0.05177169, w: 0.96228725}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: Icosphere.088
+      parentName: avtBras.R.013
+      position: {x: -0.0003349781, y: -0.0026514158, z: -0.006700456}
+      rotation: {x: 0.02983551, y: 0.7064769, z: -0.029835496, w: 0.7064772}
+      scale: {x: 0.00029007794, y: 0.00029007782, z: 0.00029793425}
+    - name: avtBras.R.014
+      parentName: avtBras.R.013
+      position: {x: 0.000000022351742, y: 0.085347295, z: -0.00000018021092}
+      rotation: {x: -0.000000013050139, y: -0.00000032741863, z: -0.042193767, w: 0.99910945}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: Icosphere.095
+      parentName: avtBras.R.014
+      position: {x: 0.0033706427, y: 0.00036129355, z: -0.006700188}
+      rotation: {x: 0.000000014876108, y: 0.70710665, z: -0.000000014876104, w: 0.7071069}
+      scale: {x: 0.00029007794, y: 0.00029007782, z: 0.00029793422}
+    - name: avtBras.R.014_end
+      parentName: avtBras.R.014
+      position: {x: -0, y: 0.092648506, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pouce.R
+      parentName: avtBras.R.001
+      position: {x: -0.000000009313226, y: 0.3591501, z: -0.00000007357448}
+      rotation: {x: -0.011993828, y: 0.01872242, z: 0.711497, w: 0.70233727}
+      scale: {x: 0.9999998, y: 0.99999994, z: 1}
+    - name: avtBras.R.019
+      parentName: pouce.R
+      position: {x: -0.00000004377216, y: 0.22268525, z: 0.00000006472692}
+      rotation: {x: 0.00000021655958, y: 0.00000014363569, z: -0.6222328, w: 0.7828323}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+    - name: Cube.027
+      parentName: avtBras.R.019
+      position: {x: 0.00060108304, y: 0.0010017306, z: -0.0067002773}
+      rotation: {x: 0.12612985, y: 0.99201375, z: 0.000000108552605, w: 0.00000021007664}
+      scale: {x: 0.00050165685, y: 0.0004884285, z: 0.0004884287}
+    - name: avtBras.R.020
+      parentName: avtBras.R.019
+      position: {x: 0.000000009313226, y: 0.14116573, z: -0.000000029802322}
+      rotation: {x: 0.000000049417697, y: 0.00000016157136, z: -0.08384941, w: 0.99647844}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Icosphere.070
+      parentName: avtBras.R.020
+      position: {x: -0.0010474175, y: -0.0032341033, z: -0.0067002773}
+      rotation: {x: 0.030056197, y: 0.70646745, z: -0.030056173, w: 0.706468}
+      scale: {x: 0.00022536593, y: 0.00022536593, z: 0.00023146959}
+    - name: avtBras.R.020_end
+      parentName: avtBras.R.020
+      position: {x: -0, y: 0.079925865, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hips.L
+      parentName: perso (6)(Clone)
+      position: {x: 0.018212859, y: 0.0000000059345044, z: -0.27585292}
+      rotation: {x: 0.017888678, y: 0.017888675, z: 0.7068805, w: 0.7068804}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cuisse.L
+      parentName: hips.L
+      position: {x: -3.330669e-16, y: 0.27764726, z: 0.00000000372529}
+      rotation: {x: -0.7113539, y: 0.030958373, z: 0.022807678, w: 0.70178133}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: Icosphere.072
+      parentName: cuisse.L
+      position: {x: -0.06834592, y: 0.010240793, z: 0.011894226}
+      rotation: {x: 0.013887247, y: 0.7030686, z: -0.040067922, w: 0.7098565}
+      scale: {x: -0.0018193679, y: -0.0018686416, z: -0.0018193674}
+    - name: tibia.L
+      parentName: cuisse.L
+      position: {x: 0.0000000037252903, y: 1.1946325, z: -0.000000015832484}
+      rotation: {x: -0.013043192, y: -0.0067998935, z: -0.085260876, w: 0.9962501}
+      scale: {x: 1, y: 1.0000001, z: 0.99999994}
+    - name: Icosphere.071
+      parentName: tibia.L
+      position: {x: 0.02324988, y: -0.011536479, z: -0.0044034123}
+      rotation: {x: -0.037122734, y: 0.70696574, z: 0.029681172, w: 0.7056489}
+      scale: {x: -0.0019163189, y: -0.001968218, z: -0.0019163188}
+    - name: ceville.L
+      parentName: tibia.L
+      position: {x: -0.0000000035797711, y: 1.4752232, z: -0.000000047111826}
+      rotation: {x: 0.034956977, y: 0.05861424, z: -0.07307811, w: 0.99498844}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Icosphere.079
+      parentName: ceville.L
+      position: {x: 0.02000457, y: 0.013753891, z: 0.0025094151}
+      rotation: {x: -0.11500753, y: 0.6603864, z: 0.054210592, w: 0.740084}
+      scale: {x: -0.00063007645, y: -0.0006471409, z: -0.0006300764}
+    - name: pied.L
+      parentName: ceville.L
+      position: {x: -0.000000037252903, y: 0.36414528, z: 0.000000007450581}
+      rotation: {x: -0.054847226, y: -0.0290525, z: 0.7843633, w: 0.6171888}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
+    - name: pied.L_end
+      parentName: pied.L
+      position: {x: -0, y: 0.5723045, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hips.R
+      parentName: perso (6)(Clone)
+      position: {x: 0.018212859, y: 0.0000000059345044, z: -0.27585292}
+      rotation: {x: 0.0172079, y: -0.017208038, z: -0.7068974, w: 0.7068974}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cuisse.R
+      parentName: hips.R
+      position: {x: 2.220446e-15, y: 0.28862336, z: -0.000000007450581}
+      rotation: {x: -0.7155485, y: -0.016644001, z: -0.016811293, w: 0.6981624}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Icosphere.075
+      parentName: cuisse.R
+      position: {x: 0.06797069, y: 0.01909411, z: -0.0072652698}
+      rotation: {x: 0.70636696, y: 0.025232542, z: 0.70734835, w: -0.008209755}
+      scale: {x: 0.0018193673, y: 0.0018686409, z: 0.0018193672}
+    - name: tibia.R
+      parentName: cuisse.R
+      position: {x: 3.4924597e-10, y: 1.1811402, z: 0.0000000013424142}
+      rotation: {x: -0.006971229, y: -0.00044174772, z: 0.054425888, w: 0.99849343}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: Icosphere.076
+      parentName: tibia.R
+      position: {x: 0.012733258, y: -0.0036035776, z: -0.0037698746}
+      rotation: {x: 0.7069313, y: -0.018182864, z: 0.7065934, w: 0.025363337}
+      scale: {x: 0.001916319, y: 0.0019682187, z: 0.0019163188}
+    - name: ceville.R
+      parentName: tibia.R
+      position: {x: -0.000000009255018, y: 1.491168, z: -0.000000021072992}
+      rotation: {x: 0.0061565368, y: -0.0024674847, z: -0.08182735, w: 0.99662447}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Icosphere.074
+      parentName: ceville.R
+      position: {x: -0.035049796, y: -0.003974676, z: 0.0024509728}
+      rotation: {x: 0.7076204, y: 0.044134773, z: 0.7046515, w: -0.028141074}
+      scale: {x: 0.00063007633, y: 0.0006471408, z: 0.0006300764}
+    - name: pied.R
+      parentName: ceville.R
+      position: {x: 0.00000002071377, y: 0.35226637, z: -0.000000001793372}
+      rotation: {x: -0.009481217, y: -0.006512251, z: -0.6699975, w: 0.7422742}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: pied.R_end
+      parentName: pied.R
+      position: {x: -0, y: 0.5723045, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IK-kneel.R
+      parentName: perso (6)(Clone)
+      position: {x: 0.3823082, y: -0.7570032, z: -1.751651}
+      rotation: {x: 1, y: -7.298257e-16, z: -0.00000031391647, w: -0.00000013315805}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IK-kneel.R_end
+      parentName: IK-kneel.R
+      position: {x: -0, y: 0.9111551, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IK-kneel.L
+      parentName: perso (6)(Clone)
+      position: {x: -0.4594059, y: -0.6221911, z: -1.7900337}
+      rotation: {x: 1, y: 7.2982953e-16, z: 0.00000031391647, w: -0.00000013315805}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IK-kneel.L_end
+      parentName: IK-kneel.L
+      position: {x: -0, y: 0.9111552, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IK-FOOT.L
+      parentName: perso (6)(Clone)
+      position: {x: -0.46119425, y: -0.00520432, z: -3.4374502}
+      rotation: {x: -0.009522045, y: 0.9977041, z: -0.0077701127, w: -0.06659994}
+      scale: {x: 5.2967715, y: 5.2967715, z: 5.296771}
+    - name: IK-FOOT.L_end
+      parentName: IK-FOOT.L
+      position: {x: -0, y: 0.436018, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IK-FOOT.R
+      parentName: perso (6)(Clone)
+      position: {x: 0.3376945, y: -0.086265445, z: -3.256253}
+      rotation: {x: 0.019905273, y: 0.9997702, z: -0.0075701256, w: 0.00246243}
+      scale: {x: 5.487267, y: 5.487265, z: 5.487267}
+    - name: IK-FOOT.R_end
+      parentName: IK-FOOT.R
+      position: {x: -0, y: 0.436018, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
