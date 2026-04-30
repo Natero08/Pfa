@@ -39,5 +39,13 @@ public class PlayerAnimation : MonoBehaviour
         {
             anim.SetBool("walking_back", false);
         }
+        if (Input.GetKey(KeyCode.E))
+        {
+            anim.SetBool("push", true);
+        }
+        else
+        {
+            anim.SetBool("push", false);
+        }
     }
 }
