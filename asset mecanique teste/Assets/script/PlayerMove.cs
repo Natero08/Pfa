@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer = 1;
     [SerializeField] private float groundCheckDistance = 1.1f;
     [SerializeField] private float groundTime = 0.1f;
+    [SerializeField] private float jumpCooldown = 0.3f; // ← AJOUT
 
     [Header("Head Bob (Balancement)")]
     [SerializeField] private bool enableHeadBob = true;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask interactableLayer;
 
     [Header("Port d'objet")]
-    [SerializeField] private Transform holdPoint;        // point devant la caméra
+    [SerializeField] private Transform holdPoint;
     [SerializeField] private float holdDistance = 1.5f;
     [SerializeField] private KeyCode dropKey = KeyCode.G;
 
@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 defaultCameraPosition;
     private float currentHeadBobY = 0f;
 
-    // anti-glissade
     private Vector3 velocity;
     private float timeOnGround;
     private bool isGrounded;
@@ -55,6 +54,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastPosition;
     public Vector3 Velocity { get; private set; }
     public bool IsInteracting { get; set; } = false;
+
+    private bool isJumping = false;
+    private float lastJumpTime = -1f; // ← AJOUT
 
     private void Start()
     {
@@ -64,9 +66,10 @@ public class PlayerController : MonoBehaviour
         UnityEngine.Cursor.visible = false;
 
         if (playerCamera != null)
-        {
             defaultCameraPosition = playerCamera.localPosition;
-        }
+        else
+            defaultCameraPosition = Vector3.zero;
+
         velocity = Vector3.zero;
     }
 
@@ -80,20 +83,27 @@ public class PlayerController : MonoBehaviour
         HandleHeadBob();
         HandleInteraction();
     }
-    private bool isJumping = false;
+
     private void HandleMovement()
     {
+        if (characterController == null)
+            return;
 
-        // Raycast depuis les pieds plutôt que le pivot
         Vector3 feetPosition = transform.position + characterController.center
                                - Vector3.up * (characterController.height / 2f);
-        isGrounded = Physics.Raycast(feetPosition, Vector3.down, groundCheckDistance, groundLayer);
+        float edgeOffset = characterController.radius * 0.85f;
+        isGrounded = Physics.Raycast(feetPosition, Vector3.down, groundCheckDistance, groundLayer)
+                  || Physics.Raycast(feetPosition + transform.right * edgeOffset, Vector3.down, groundCheckDistance, groundLayer)
+                  || Physics.Raycast(feetPosition - transform.right * edgeOffset, Vector3.down, groundCheckDistance, groundLayer)
+                  || Physics.Raycast(feetPosition + transform.forward * edgeOffset, Vector3.down, groundCheckDistance, groundLayer)
+                  || Physics.Raycast(feetPosition - transform.forward * edgeOffset, Vector3.down, groundCheckDistance, groundLayer);
 
         if (isGrounded && velocity.y <= 0f)
         {
             timeOnGround = groundTime;
             if (velocity.y < 0f)
                 velocity.y = -2f;
+            isJumping = false;
         }
         else
         {
@@ -108,22 +118,24 @@ public class PlayerController : MonoBehaviour
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         characterController.Move(move * currentSpeed * Time.deltaTime);
 
-        if (timeOnGround <= 0f)
-            isJumping = false;
-
-        // ← SAUT
-        if (Input.GetKeyDown(jumpKey) && timeOnGround > 0f && !isJumping)
+        // ← SAUT avec cooldown
+        if (Input.GetKeyDown(jumpKey) && timeOnGround > 0f && !isJumping && Time.time - lastJumpTime > jumpCooldown)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             timeOnGround = 0f;
             isJumping = true;
+            lastJumpTime = Time.time; // ← AJOUT
         }
+
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
     }
 
     private void HandleMouseLook()
     {
+        if (playerCamera == null)
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -139,11 +151,10 @@ public class PlayerController : MonoBehaviour
         if (!enableHeadBob || playerCamera == null) return;
 
         bool isMoving = IsInteracting
-    ? Input.GetAxis("Vertical") != 0
-    : Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
-        bool isGroundedForBob = characterController.isGrounded;
+            ? Input.GetAxis("Vertical") != 0
+            : Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
 
-        if (isMoving && isGroundedForBob)
+        if (isMoving && isGrounded)
         {
             headBobTimer += Time.deltaTime * headBobSpeed;
             float newY = Mathf.Sin(headBobTimer) * headBobAmount;
@@ -164,6 +175,9 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInteraction()
     {
+        if (playerCamera == null)
+            return;
+
         if (Input.GetKeyDown(dropKey) && heldObject != null)
         {
             DropObject();
@@ -176,7 +190,6 @@ public class PlayerController : MonoBehaviour
         if (Physics.SphereCast(ray, 0.1f, out hit, interactionDistance, interactableLayer))
         {
             currentInteractable = hit.collider.gameObject;
-            
 
             if (Input.GetKeyDown(interactKey))
             {
@@ -188,35 +201,47 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    currentInteractable.SendMessage("Interact");
+                    currentInteractable.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
                 }
             }
         }
         else
         {
             currentInteractable = null;
-            
         }
 
-        if (heldObject != null)
+        if (heldObject != null && heldRigidbody != null)
         {
-            Vector3 target = playerCamera.position + playerCamera.forward * holdDistance;
+            Vector3 target = holdPoint != null
+      ? holdPoint.position
+      : playerCamera.position + playerCamera.forward * holdDistance;
             heldRigidbody.linearVelocity = (target - heldObject.transform.position) * 15f;
             heldRigidbody.angularVelocity = Vector3.zero;
         }
     }
+
     private void PickUpObject(GameObject obj)
     {
+        if (obj == null)
+            return;
+
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if (rb == null)
+            return;
+
         heldObject = obj;
-        heldRigidbody = obj.GetComponent<Rigidbody>();
+        heldRigidbody = rb;
         heldRigidbody.useGravity = false;
-        heldRigidbody.freezeRotation = true;
+        heldRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     private void DropObject()
     {
-        heldRigidbody.useGravity = true;
-        heldRigidbody.freezeRotation = false;
+        if (heldRigidbody != null)
+        {
+            heldRigidbody.useGravity = true;
+            heldRigidbody.constraints = RigidbodyConstraints.None;
+        }
         heldObject = null;
         heldRigidbody = null;
     }
