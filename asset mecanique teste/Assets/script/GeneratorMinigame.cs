@@ -1,7 +1,6 @@
-using TMPro;
-using UnityEngine;
-using UnityEngine.Audio;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GeneratorMinigame : MonoBehaviour
 {
@@ -9,10 +8,13 @@ public class GeneratorMinigame : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject minigamePanel;
-    [SerializeField] private Slider[] sliders;
-    [SerializeField] private TextMeshProUGUI[] sliderValueTexts;
-    [SerializeField] private TextMeshProUGUI totalVoltageText;
+    [SerializeField] private Slider voltageSlider;
+    [SerializeField] private TextMeshProUGUI valueText;
+    [SerializeField] private TextMeshProUGUI minText;
+    [SerializeField] private TextMeshProUGUI maxText;
+    [SerializeField] private TextMeshProUGUI targetRangeText;
     [SerializeField] private TextMeshProUGUI generatorNameText;
+    [SerializeField] private TextMeshProUGUI statusText;
 
     private Generator currentGenerator;
     private bool isOpen = false;
@@ -29,25 +31,22 @@ public class GeneratorMinigame : MonoBehaviour
         isOpen = true;
         minigamePanel.SetActive(true);
 
+        // Configure le slider selon le gÃ©nÃ©rateur
+        voltageSlider.minValue = generator.minVoltage;
+        voltageSlider.maxValue = generator.maxVoltage;
+        voltageSlider.value = generator.currentValue;
+
+        // Affiche les infos
         generatorNameText.text = generator.generatorName;
+        minText.text = generator.minVoltage + " V";
+        maxText.text = generator.maxVoltage + " V";
+        targetRangeText.text = $"Cible : {generator.targetMin}V â€” {generator.targetMax}V";
 
-        // Configure les sliders selon le générateur
-        for (int i = 0; i < sliders.Length; i++)
-        {
-            sliders[i].minValue = generator.minVoltage;
-            sliders[i].maxValue = generator.maxVoltage;
-            sliders[i].value = generator.currentValues[i];
+        voltageSlider.onValueChanged.RemoveAllListeners();
+        voltageSlider.onValueChanged.AddListener(OnSliderChanged);
 
-            int index = i;
-            sliders[i].onValueChanged.RemoveAllListeners();
-            sliders[i].onValueChanged.AddListener((val) => OnSliderChanged(index, val));
+        UpdateUI(voltageSlider.value);
 
-            UpdateSliderText(i);
-        }
-
-        UpdateTotalText();
-
-        // Bloque le curseur
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -56,44 +55,31 @@ public class GeneratorMinigame : MonoBehaviour
     {
         if (!isOpen) return;
 
-        // Sauvegarde les valeurs dans le générateur
-        for (int i = 0; i < sliders.Length; i++)
-            currentGenerator.currentValues[i] = sliders[i].value;
-
+        currentGenerator.currentValue = voltageSlider.value;
         currentGenerator.SaveCalibration();
+
         isOpen = false;
         minigamePanel.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // Vérifie si tous les générateurs atteignent 200v
         GeneratorManager.Instance.CheckAllGenerators();
     }
 
-    void OnSliderChanged(int index, float val)
+    void OnSliderChanged(float val)
     {
-        UpdateSliderText(index);
-        UpdateTotalText();
+        UpdateUI(val);
     }
 
-    void UpdateSliderText(int index)
+    void UpdateUI(float val)
     {
-        float val = sliders[index].value;
-        sliderValueTexts[index].text = val.ToString("F1") + " V";
-    }
+        valueText.text = val.ToString("F1") + " V";
 
-    void UpdateTotalText()
-    {
-        float total = 0f;
-        foreach (var s in sliders)
-            total += s.value;
-
-        totalVoltageText.text = "Total : " + total.ToString("F1") + " V";
-
-        // Couleur selon si on est dans la bonne plage
-        bool calibrated = total >= currentGenerator.targetMin && total <= currentGenerator.targetMax;
-        totalVoltageText.color = calibrated ? Color.green : Color.red;
+        bool inRange = val >= currentGenerator.targetMin && val <= currentGenerator.targetMax;
+        valueText.color = inRange ? Color.green : Color.red;
+        statusText.text = inRange ? "âœ” CalibrÃ©" : "âœ˜ Hors plage";
+        statusText.color = inRange ? Color.green : Color.red;
     }
 
     public bool IsOpen() => isOpen;
