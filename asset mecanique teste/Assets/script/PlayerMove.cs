@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float holdDistance = 1.5f;
     [SerializeField] private KeyCode dropKey = KeyCode.G;
 
+    [Header("Crosshair")]
+    [SerializeField] private Crosshair crosshair;
+
     private GameObject heldObject = null;
     private Rigidbody heldRigidbody = null;
 
@@ -119,7 +122,8 @@ public class PlayerController : MonoBehaviour
         characterController.Move(move * currentSpeed * Time.deltaTime);
 
         // ← SAUT avec cooldown
-        if (Input.GetKeyDown(jumpKey) && timeOnGround > 0f && !isJumping && Time.time - lastJumpTime > jumpCooldown)
+
+            if (Input.GetKeyDown(jumpKey) && timeOnGround > 0f && !isJumping && Time.time - lastJumpTime > jumpCooldown && PlayerAbilities.Instance.canJump)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             timeOnGround = 0f;
@@ -191,6 +195,8 @@ public class PlayerController : MonoBehaviour
         {
             currentInteractable = hit.collider.gameObject;
 
+            if (crosshair != null) crosshair.SetInteractable(true); // ← AJOUT
+
             if (Input.GetKeyDown(interactKey))
             {
                 Pickable pickable = currentInteractable.GetComponent<Pickable>();
@@ -208,13 +214,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             currentInteractable = null;
+            if (crosshair != null) crosshair.SetInteractable(false); // ← AJOUT
         }
 
         if (heldObject != null && heldRigidbody != null)
         {
             Vector3 target = holdPoint != null
-      ? holdPoint.position
-      : playerCamera.position + playerCamera.forward * holdDistance;
+                ? holdPoint.position
+                : playerCamera.position + playerCamera.forward * holdDistance;
             heldRigidbody.linearVelocity = (target - heldObject.transform.position) * 15f;
             heldRigidbody.angularVelocity = Vector3.zero;
         }

@@ -1,40 +1,40 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class GeneratorManager : MonoBehaviour
 {
-    public static GeneratorManager Instance;
-
-    [Header("Générateurs")]
+    [Header("GÃ©nÃ©rateurs")]
     [SerializeField] private Generator[] generators;
 
-    [Header("Barrière")]
-    [SerializeField] private Transform barrier;
+    [Header("BarriÃ¨res")]
+    [SerializeField] private Transform[] barriers;  // tableau au lieu d'une seule
     [SerializeField] private float barrierMoveDistance = 5f;
     [SerializeField] private float barrierMoveSpeed = 2f;
 
     private bool barrierOpened = false;
-    private Vector3 barrierTargetPosition;
-    private Vector3 barrierStartPosition;
-
-    void Awake()
-    {
-        Instance = this;
-        
-    }
+    private Vector3[] barrierTargetPositions;
+    private Vector3[] barrierStartPositions;
 
     void Start()
     {
-        barrierStartPosition = barrier.position;
-        barrierTargetPosition = barrierStartPosition + Vector3.left * barrierMoveDistance;
+        barrierStartPositions = new Vector3[barriers.Length];
+        barrierTargetPositions = new Vector3[barriers.Length];
+
+        for (int i = 0; i < barriers.Length; i++)
+        {
+            barrierStartPositions[i] = barriers[i].position;
+            barrierTargetPositions[i] = barrierStartPositions[i] + Vector3.left * barrierMoveDistance;
+        }
     }
 
     void Update()
     {
-        if (barrierOpened)
+        if (!barrierOpened) return;
+
+        for (int i = 0; i < barriers.Length; i++)
         {
-            barrier.position = Vector3.MoveTowards(
-                barrier.position,
-                barrierTargetPosition,
+            barriers[i].position = Vector3.MoveTowards(
+                barriers[i].position,
+                barrierTargetPositions[i],
                 barrierMoveSpeed * Time.deltaTime
             );
         }
@@ -45,15 +45,31 @@ public class GeneratorManager : MonoBehaviour
         if (barrierOpened) return;
 
         foreach (var g in generators)
-        {
-            if (!g.isCalibrated)
-            {
-                Debug.Log("Pas encore tous calibrés !");
-                return;
-            }
-        }
+            if (!g.isCalibrated) return;
 
-        Debug.Log("Tous calibrés ! Barrière ouvre !");
+        Debug.Log("Tous calibrÃ©s ! BarriÃ¨res ouvrent !");
         barrierOpened = true;
     }
+
+    public int GetCalibratedCount()
+    {
+        int count = 0;
+        foreach (var g in generators)
+            if (g.isCalibrated) count++;
+        return count;
+    }
+
+    public int GetTotalCount() => generators.Length;
+
+    public string[] GetGeneratorStatus()
+    {
+        string[] lines = new string[generators.Length];
+        for (int i = 0; i < generators.Length; i++)
+        {
+            string state = generators[i].isCalibrated ? "âœ”" : "âœ˜";
+            lines[i] = $"{state} {generators[i].generatorName}";
+        }
+        return lines;
+    }
+
 }

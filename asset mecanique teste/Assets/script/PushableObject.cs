@@ -21,20 +21,27 @@ public class PushableObject : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Pushable");
     }
 
+    [Header("Restriction")]
+    [SerializeField] private string lockedMessage = "C'est trop lourd...";
+
     public void Interact()
     {
+        if (!PlayerAbilities.Instance.canPush)
+        {
+            HUDMessage.Instance.ShowMessage(lockedMessage);
+            return;
+        }
+
         isPushing = !isPushing;
         if (isPushing)
         {
             pusher = FindPlayer();
-
             if (pusher == null)
             {
                 isPushing = false;
                 Debug.LogWarning("⚠️ Aucun joueur trouvé pour pousser.");
                 return;
             }
-
             playerControllerScript = pusher.GetComponent<PlayerController>();
             if (playerControllerScript == null)
             {
@@ -43,13 +50,9 @@ public class PushableObject : MonoBehaviour
                 Debug.LogWarning("⚠️ Le joueur n'a pas de script PlayerController.");
                 return;
             }
-
             initialOffset = transform.position - pusher.position;
             initialOffset.y = 0f;
-
-            // ✅ On bloque les mouvements latéraux du joueur
             playerControllerScript.IsInteracting = true;
-
             Debug.Log($"🚀 DÉBUT poussage {name}");
         }
         else
