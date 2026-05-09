@@ -195,13 +195,19 @@ public class PlayerController : MonoBehaviour
         {
             currentInteractable = hit.collider.gameObject;
 
-            if (crosshair != null) crosshair.SetInteractable(true); // ← AJOUT
+            if (crosshair != null) crosshair.SetInteractable(true);
 
             if (Input.GetKeyDown(interactKey))
             {
                 Pickable pickable = currentInteractable.GetComponent<Pickable>();
                 if (pickable != null)
                 {
+                    // ← RESTRICTION CARRY
+                    if (!PlayerAbilities.Instance.canCarry)
+                    {
+                        HUDMessage.Instance.ShowMessage(PlayerAbilities.Instance.carryLockedMessage);
+                        return;
+                    }
                     if (heldObject != null) DropObject();
                     PickUpObject(currentInteractable);
                 }
@@ -214,7 +220,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             currentInteractable = null;
-            if (crosshair != null) crosshair.SetInteractable(false); // ← AJOUT
+            if (crosshair != null) crosshair.SetInteractable(false);
         }
 
         if (heldObject != null && heldRigidbody != null)
