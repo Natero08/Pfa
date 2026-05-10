@@ -4,17 +4,23 @@ public class PlayerAbilities : MonoBehaviour
 {
     public static PlayerAbilities Instance;
 
-    [Header("Capacités")]
-    public bool canInteractGenerators = false;
-    public bool canJump = false;
-    public bool canPush = false;
-    public bool canCarry = false;
+    [Header("Déblocages permanents")]
+    public bool unlockedJump = false;
+    public bool unlockedCarry = false;
+    public bool unlockedPush = false;
+    public bool unlockedGenerators = false;
+
+    [Header("Capacités actives")]
+    public bool canJump = true;
+    public bool canCarry = true;
+    public bool canPush = true;
+    public bool canInteractGenerators = true;
 
     [Header("Messages de restriction")]
-    public string generatorLockedMessage = "Trouvez la télécommande d'abord !";
-    public string jumpLockedMessage = "Vous ne pouvez pas encore sauter !";
-    public string pushLockedMessage = "Vous ne pouvez pas encore pousser !";
-    public string carryLockedMessage = "Vous ne pouvez pas encore porter d'objets !";
+    public string jumpLockedMessage = "Je ne peux pas sauter ici !";
+    public string carryLockedMessage = "Je ne peux pas porter ça...";
+    public string pushLockedMessage = "C'est trop lourd...";
+    public string generatorLockedMessage = "Je ne comprends pas comment ça marche...";
 
     void Awake()
     {
