@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        Debug.Log("PlayGame appelé !");
         SceneManager.LoadScene("GameScene"); // remplace par le nom exact de ta scène de jeu
     }
 
