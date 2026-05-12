@@ -93,14 +93,19 @@ public class RestrictionZone : MonoBehaviour
         if (!other.CompareTag("Player")) return;
 
         isInZoneBas = true;
-        dayNightCycle.enabled = true;   // cycle actif en bas
-        nightLight.enabled = false;     // nuit fixe éteinte 
-        if (restrictJump) PlayerAbilities.Instance.canJump = PlayerAbilities.Instance.unlockedJump;
-        if (restrictCarry) PlayerAbilities.Instance.canCarry = PlayerAbilities.Instance.unlockedCarry;
-        if (restrictPush) PlayerAbilities.Instance.canPush = PlayerAbilities.Instance.unlockedPush;
-        if (restrictGenerators) PlayerAbilities.Instance.canInteractGenerators = PlayerAbilities.Instance.unlockedGenerators;
 
-        Debug.Log("Zone bas : restrictions activées, transition lumière vers jour");
+        // On ne restreint que si la capacité n'est pas débloquée de façon permanente
+        if (restrictJump && !PlayerAbilities.Instance.unlockedJump)
+            PlayerAbilities.Instance.canJump = false;
+
+        if (restrictCarry && !PlayerAbilities.Instance.unlockedCarry)
+            PlayerAbilities.Instance.canCarry = false;
+
+        if (restrictPush && !PlayerAbilities.Instance.unlockedPush)
+            PlayerAbilities.Instance.canPush = false;
+
+        if (restrictGenerators && !PlayerAbilities.Instance.unlockedGenerators)
+            PlayerAbilities.Instance.canInteractGenerators = false;
     }
 
     private void OnTriggerExit(Collider other)
@@ -108,13 +113,11 @@ public class RestrictionZone : MonoBehaviour
         if (!other.CompareTag("Player")) return;
 
         isInZoneBas = false;
-        dayNightCycle.enabled = false;  // cycle inactif en haut
-        nightLight.enabled = true;
+
+        // En sortant tout redevient accessible
         if (restrictJump) PlayerAbilities.Instance.canJump = true;
         if (restrictCarry) PlayerAbilities.Instance.canCarry = true;
         if (restrictPush) PlayerAbilities.Instance.canPush = true;
         if (restrictGenerators) PlayerAbilities.Instance.canInteractGenerators = true;
-
-        Debug.Log("Zone haut : restrictions désactivées, transition lumière vers nuit");
     }
 }

@@ -191,14 +191,18 @@ public class PlayerController : MonoBehaviour
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
-        if (Physics.SphereCast(ray, 0.1f, out hit, interactionDistance, interactableLayer))
+       
+
+        if (Physics.SphereCast(ray, 0.2f, out hit, interactionDistance, interactableLayer))
         {
             currentInteractable = hit.collider.gameObject;
 
+           
             if (crosshair != null) crosshair.SetInteractable(true);
 
             if (Input.GetKeyDown(interactKey))
             {
+               
                 Pickable pickable = currentInteractable.GetComponent<Pickable>();
                 if (pickable != null)
                 {

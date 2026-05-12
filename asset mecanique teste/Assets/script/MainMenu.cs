@@ -33,4 +33,11 @@ public class MainMenu : MonoBehaviour
         menuPanel.SetActive(true);
         settingsPanel.SetActive(false);
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
 }

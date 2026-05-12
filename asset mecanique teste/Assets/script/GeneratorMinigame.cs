@@ -51,6 +51,7 @@ public class GeneratorMinigame : MonoBehaviour
 
     public void Open(Generator generator)
     {
+        
         currentGenerator = generator;
         isOpen = true;
         minigamePanel.SetActive(true);
@@ -97,7 +98,7 @@ public class GeneratorMinigame : MonoBehaviour
         valueText.text = val.ToString("F1") + " V";
         bool inRange = val >= currentGenerator.targetMin && val <= currentGenerator.targetMax;
         valueText.color = inRange ? Color.green : Color.red;
-        statusText.text = inRange ? "✔ Calibré" : "✘ Hors plage";
+        statusText.text = inRange ? "Calibré" : "Hors plage";
         statusText.color = inRange ? Color.green : Color.red;
     }
 

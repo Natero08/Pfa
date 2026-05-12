@@ -21,14 +21,17 @@ public class Generator : MonoBehaviour
     {
         if (!PlayerAbilities.Instance.canInteractGenerators)
         {
+            
             HUDMessage.Instance.ShowMessage(lockedMessage);
             return;
         }
+        
         if (!PlayerAbilities.Instance.canInteractGenerators)
         {
             HUDMessage.Instance.ShowMessage(PlayerAbilities.Instance.generatorLockedMessage);
             return;
         }
+
         if (GeneratorMinigame.Instance.IsOpen())
             GeneratorMinigame.Instance.Close();
         else
