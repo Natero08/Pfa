@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63e662d92a7c1534986b2274805d72e3
+guid: dccf22118bf73fe43a80e84436103c29
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 1
-    aniso: 1
+    aniso: 0
     mipBias: 0
     wrapU: 1
     wrapV: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crosshaire 1_0
+      name: fond bleu_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 3137
-        height: 1668
+        y: 258
+        width: 607
+        height: 639
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7cbb0763bb7a084587a56e62ab67a14
-      internalID: 319690342
+      spriteID: 1ed9ecc9a125b9a4ebb2fbcc4c2fc486
+      internalID: -72734859
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2f8a123dc11d7044a87651c39e94ff2c
+    spriteID: 169264511ff91e24c8fdabfecc76db07
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      crosshaire 1_0: 319690342
+      fond bleu_0: -72734859
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
