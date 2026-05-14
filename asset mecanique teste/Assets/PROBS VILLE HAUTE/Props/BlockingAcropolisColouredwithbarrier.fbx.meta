@@ -42,6 +42,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: 3831eb3f80c17a547b243e84b22b2826, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material.009
     second: {fileID: 2100000, guid: 797d55970b9388946a4c083484292698, type: 2}
   - first:
@@ -54,6 +59,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material.011
     second: {fileID: 2100000, guid: c1aaab50ab0b31741ab4771e405ca84a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.012
+    second: {fileID: 2100000, guid: 7a1781f669e774f45af94859f4e12cfa, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -229,6 +239,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material.063
     second: {fileID: 2100000, guid: a90441c55bd8aff44b988b6ff4633884, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Neon
+    second: {fileID: 2100000, guid: e3c1fd4e68cffe94fad8b578172b787d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
