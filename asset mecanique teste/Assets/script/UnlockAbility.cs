@@ -8,18 +8,39 @@ public class UnlockAbility : MonoBehaviour
     [SerializeField] private string unlockMessage = "Capacité débloquée !";
     [SerializeField] private bool destroyAfterUse = false;
 
+    [Header("Swap de mesh")]
+    [SerializeField] private GameObject meshADesactiver;
+    [SerializeField] private GameObject meshAActiver;
+
     public void Interact()
     {
         switch (abilityToUnlock)
         {
             case AbilityType.InteractGenerators:
-                PlayerAbilities.Instance.canInteractGenerators = true; break;
+                PlayerAbilities.Instance.unlockedGenerators = true;
+                PlayerAbilities.Instance.canInteractGenerators = true;
+                break;
+
             case AbilityType.Jump:
-                PlayerAbilities.Instance.canJump = true; break;
+                PlayerAbilities.Instance.unlockedJump = true;
+                PlayerAbilities.Instance.canJump = true;
+                break;
+
             case AbilityType.Push:
-                PlayerAbilities.Instance.canPush = true; break;
+                PlayerAbilities.Instance.unlockedPush = true;
+                PlayerAbilities.Instance.canPush = true;
+                // Swap mesh bras
+                if (meshADesactiver != null) meshADesactiver.SetActive(false);
+                if (meshAActiver != null) meshAActiver.SetActive(true);
+                break;
+
             case AbilityType.Carry:
-                PlayerAbilities.Instance.canCarry = true; break;
+                PlayerAbilities.Instance.unlockedCarry = true;
+                PlayerAbilities.Instance.canCarry = true;
+                // Swap mesh bras
+                if (meshADesactiver != null) meshADesactiver.SetActive(false);
+                if (meshAActiver != null) meshAActiver.SetActive(true);
+                break;
         }
 
         HUDMessage.Instance.ShowMessage(unlockMessage);

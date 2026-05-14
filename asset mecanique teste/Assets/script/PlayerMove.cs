@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     [Header("Crosshair")]
     [SerializeField] private Crosshair crosshair;
 
+    public bool lockCamera = false;
+
     private GameObject heldObject = null;
     private Rigidbody heldRigidbody = null;
 
@@ -137,8 +139,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMouseLook()
     {
-        if (playerCamera == null)
-            return;
+        if (playerCamera == null) return;
+        if (lockCamera) return; // ← AJOUT
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;

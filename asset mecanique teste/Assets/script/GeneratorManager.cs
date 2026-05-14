@@ -66,7 +66,7 @@ public class GeneratorManager : MonoBehaviour
         string[] lines = new string[generators.Length];
         for (int i = 0; i < generators.Length; i++)
         {
-            string state = generators[i].isCalibrated ? "✔" : "✘";
+            string state = generators[i].isCalibrated ? "[V]" : "[X]";
             lines[i] = $"{state} {generators[i].generatorName}";
         }
         return lines;

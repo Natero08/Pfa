@@ -17,11 +17,12 @@ public class GeneratorMinigame : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statusText;
 
     [Header("Auto-fermeture")]
-    [SerializeField] private float autoCloseDistance = 3f;
-    [SerializeField] private Transform playerTransform; // glisse ton Player ici dans l'Inspector
+    [SerializeField] private float autoCloseDistance = 8f;
+    [SerializeField] private Transform playerTransform;
 
     private Generator currentGenerator;
     private bool isOpen = false;
+    private PlayerController playerController;
 
     void Awake()
     {
@@ -31,12 +32,14 @@ public class GeneratorMinigame : MonoBehaviour
 
     void Start()
     {
-        // Fallback si pas assigné dans l'Inspector
         if (playerTransform == null)
         {
             GameObject player = GameObject.FindWithTag("Player");
             if (player != null)
+            {
                 playerTransform = player.transform;
+                playerController = player.GetComponent<PlayerController>();
+            }
         }
     }
 
@@ -51,10 +54,13 @@ public class GeneratorMinigame : MonoBehaviour
 
     public void Open(Generator generator)
     {
-        
         currentGenerator = generator;
         isOpen = true;
         minigamePanel.SetActive(true);
+
+        // Bloque la caméra
+        if (playerController != null)
+            playerController.lockCamera = true;
 
         voltageSlider.minValue = generator.minVoltage;
         voltageSlider.maxValue = generator.maxVoltage;
@@ -84,6 +90,10 @@ public class GeneratorMinigame : MonoBehaviour
         isOpen = false;
         minigamePanel.SetActive(false);
 
+        // Débloque la caméra
+        if (playerController != null)
+            playerController.lockCamera = false;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -98,7 +108,7 @@ public class GeneratorMinigame : MonoBehaviour
         valueText.text = val.ToString("F1") + " V";
         bool inRange = val >= currentGenerator.targetMin && val <= currentGenerator.targetMax;
         valueText.color = inRange ? Color.green : Color.red;
-        statusText.text = inRange ? "Calibré" : "Hors plage";
+        statusText.text = inRange ? "Calibre" : "Hors plage";
         statusText.color = inRange ? Color.green : Color.red;
     }
 
