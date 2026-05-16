@@ -193,22 +193,18 @@ public class PlayerController : MonoBehaviour
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
-       
-
-        if (Physics.SphereCast(ray, 0.2f, out hit, interactionDistance, interactableLayer))
+        if (Physics.SphereCast(ray, 0.3f, out hit, interactionDistance, interactableLayer))
         {
             currentInteractable = hit.collider.gameObject;
 
-           
             if (crosshair != null) crosshair.SetInteractable(true);
 
             if (Input.GetKeyDown(interactKey))
             {
-               
-                Pickable pickable = currentInteractable.GetComponent<Pickable>();
+                Pickable pickable = currentInteractable.GetComponentInParent<Pickable>();
+
                 if (pickable != null)
                 {
-                    // ← RESTRICTION CARRY
                     if (!PlayerAbilities.Instance.canCarry)
                     {
                         HUDMessage.Instance.ShowMessage(PlayerAbilities.Instance.carryLockedMessage);
@@ -234,7 +230,9 @@ public class PlayerController : MonoBehaviour
             Vector3 target = holdPoint != null
                 ? holdPoint.position
                 : playerCamera.position + playerCamera.forward * holdDistance;
-            heldRigidbody.linearVelocity = (target - heldObject.transform.position) * 15f;
+
+            Vector3 moveDirection = (target - heldObject.transform.position);
+            heldRigidbody.linearVelocity = moveDirection * 15f;
             heldRigidbody.angularVelocity = Vector3.zero;
         }
     }
